@@ -1,0 +1,197 @@
+/*
+  Reverse holo, scoped to .pcard so the scroll-stack .card rules stay untouched.
+  Same foil, mask, shine, and glare as poke-holo.simey.me.
+*/
+
+.pcard {
+  --card-aspect: 0.718;
+  --card-radius: 4.55% / 3.5%;
+  --card-edge: hsl(47, 100%, 78%);
+  --card-glow: hsl(175, 100%, 90%);
+  --foil-brightness: 0.55;
+
+  --clip: inset(9.85% 8% 52.85% 8%);
+  --clip-invert: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0 47.15%, 91.5% 47.15%, 91.5% 9.85%, 8% 9.85%, 8% 47.15%, 0 50%);
+
+  --pointer-x: 30%;
+  --pointer-y: 18%;
+  --pointer-from-center: 0.78;
+  --pointer-from-top: 0.18;
+  --pointer-from-left: 0.3;
+  --card-opacity: 1;
+  --rotate-x: 6deg;
+  --rotate-y: -9deg;
+  --background-x: 45%;
+  --background-y: 39%;
+  --card-scale: 1;
+  --translate-x: 0px;
+  --translate-y: 0px;
+
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: translate3d(0, 0, 0.01px);
+  transform-style: preserve-3d;
+  pointer-events: none;
+  z-index: calc(var(--card-scale) * 2);
+  aspect-ratio: var(--card-aspect);
+  border-radius: var(--card-radius);
+}
+
+.pcard,
+.pcard * {
+  outline: 1px solid transparent;
+}
+
+.pcard.lightning { --foil-brightness: 0.7; }
+.pcard.darkness { --foil-brightness: 0.8; }
+
+.pcard__translater,
+.pcard__rotator {
+  display: grid;
+  perspective: 600px;
+  transform-origin: center;
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+  aspect-ratio: var(--card-aspect);
+  border-radius: var(--card-radius);
+  width: 100%;
+  height: 100%;
+}
+
+.pcard__translater {
+  position: relative;
+  --translate-z: calc(var(--card-scale) * 150px + 0.01px);
+  transform: translate3d(var(--translate-x), var(--translate-y), var(--translate-z)) scale(var(--card-scale));
+}
+
+.pcard__rotator {
+  transform: rotateY(var(--rotate-x)) rotateX(var(--rotate-y));
+  pointer-events: auto;
+  box-shadow: 0 14px 28px -10px rgba(0, 0, 0, 0.75);
+}
+
+.pcard__rotator * {
+  width: 100%;
+  display: grid;
+  grid-area: 1 / 1;
+  aspect-ratio: var(--card-aspect);
+  border-radius: var(--card-radius);
+  transform-style: preserve-3d;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.pcard__rotator img {
+  height: auto;
+  transform: translate3d(0, 0, 0.01px);
+}
+
+.pcard__front,
+.pcard__front * {
+  backface-visibility: hidden;
+}
+
+.pcard__front {
+  opacity: 1;
+  isolation: isolate;
+  transform: translate3d(0, 0, 0.01px);
+}
+
+.pcard__shine,
+.pcard__glare {
+  will-change: transform, opacity, background-image, background-size, background-position, background-blend-mode, filter;
+}
+
+.pcard__shine {
+  display: grid;
+  transform: translateZ(1px);
+  overflow: hidden;
+  z-index: 3;
+  background: transparent;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.85) contrast(2.75) saturate(0.65);
+  mix-blend-mode: color-dodge;
+  opacity: var(--card-opacity);
+}
+
+.pcard.masked .pcard__shine {
+  -webkit-mask-image: var(--mask);
+  mask-image: var(--mask);
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  -webkit-mask-position: center center;
+  mask-position: center center;
+}
+
+.pcard[data-rarity$="reverse holo"] .pcard__shine {
+  background-image:
+    radial-gradient(
+      circle at var(--pointer-x) var(--pointer-y),
+      #fff 5%,
+      #000 50%,
+      #fff 80%
+    ),
+    linear-gradient(-45deg, #000 15%, #fff, #000 85%),
+    var(--foil);
+  background-blend-mode: soft-light, difference;
+  background-size: 120% 120%, 200% 200%, cover;
+  background-position:
+    center center,
+    calc(100% * var(--pointer-from-left)) calc(100% * var(--pointer-from-top)),
+    center center;
+  filter: brightness(var(--foil-brightness)) contrast(1.5) saturate(1);
+  mix-blend-mode: color-dodge;
+  opacity: calc((1.5 * var(--card-opacity)) - var(--pointer-from-center));
+}
+
+.pcard:not(.masked)[data-rarity$="reverse holo"] .pcard__shine {
+  --foil: none;
+  clip-path: var(--clip-invert);
+}
+
+.pcard__glare {
+  transform: translateZ(1.41px);
+  overflow: hidden;
+  background-image: radial-gradient(
+    farthest-corner circle at var(--pointer-x) var(--pointer-y),
+    hsla(0, 0%, 100%, 0.8) 10%,
+    hsla(0, 0%, 100%, 0.65) 20%,
+    hsla(0, 0%, 0%, 0.5) 90%
+  );
+  opacity: var(--card-opacity);
+  mix-blend-mode: overlay;
+}
+
+.pcard[data-rarity$="reverse holo"] .pcard__glare {
+  opacity: var(--card-opacity);
+  background-image: radial-gradient(
+    farthest-corner circle at var(--pointer-x) var(--pointer-y),
+    hsla(0, 0%, 100%, 0.8) 10%,
+    hsla(0, 0%, 100%, 0.5) 20%,
+    hsla(0, 0%, 0%, 0.75) 90%
+  );
+  filter: brightness(0.7) contrast(1.5);
+}
+
+.pcard[data-rarity$="reverse holo"] .pcard__glare:after {
+  content: "";
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+  opacity: var(--card-opacity);
+  background-image: radial-gradient(
+    farthest-corner circle at var(--pointer-x) var(--pointer-y),
+    hsl(0, 0%, 100%) 10%,
+    hsla(0, 0%, 100%, 0.5) 20%,
+    hsla(0, 0%, 0%, 0.5) 120%
+  );
+  filter: brightness(1) contrast(1.5);
+  clip-path: var(--clip);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pcard__rotator { transition: none; }
+}

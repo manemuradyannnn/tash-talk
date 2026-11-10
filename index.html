@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>tash talk</title>
+		<meta name="description" content="An experimental 3D stack motion animation on scroll." />
+		<meta name="keywords" content="nft card animation, gsap, scroll animation, 3d" />
+		<meta name="author" content="Codrops" />
+		<link rel="icon" href="favicon.png?v=3" type="image/png">
+		<link rel="shortcut icon" href="favicon.ico?v=3">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/base.css?v=9" />
+		<link rel="stylesheet" type="text/css" href="css/hero.css?v=33" />
+		<link rel="stylesheet" type="text/css" href="css/holo.css?v=4" />
+		<script>
+			document.documentElement.className = 'js';
+		</script>
+	</head>
+	<body class="loading">
+		<div class="page-guides" aria-hidden="true"></div>
+		<main>
+			<section class="hero">
+				<header class="hero__nav">
+					<a class="hero__brand" href="#top" aria-label="tash talk home">tash talk</a>
+					<nav class="hero__links" aria-label="Primary">
+						<a href="#top">Home</a>
+						<a href="connect.html#markets">Markets</a>
+						<a href="connect.html#portfolio">Portfolio</a>
+						<a href="connect.html">Connect</a>
+					</nav>
+					<div class="hero__nav-end">
+						<button type="button" class="hero__menu" aria-label="Menu" aria-expanded="false">
+							<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 5h12M2 11h12"/></svg>
+						</button>
+					</div>
+				</header>
+				<h1 class="hero__title" id="top">
+					<span class="hero__live" id="hero-live">Where investors connect together</span>
+					<span class="hero__line" aria-hidden="true">
+						<span class="hero__where">Where</span>
+						<span class="hero__chip" style="background-color:#2a0a3d;color:#dcb3ff">
+							<span class="hero__chip-stage">
+								<span class="hero__face">
+									<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20V10.2h4.1V20H3.5Zm6.4 0V5.6h4.2V20H9.9Zm6.5 0V2.8H20.5V20h-4.1Z"/></svg>
+									<span>investors</span>
+								</span>
+							</span>
+						</span>
+						<span class="hero__tail">connect together</span>
+					</span>
+				</h1>
+				<div class="hero__stage">
+					<div class="hero__wash" aria-hidden="true"></div>
+					<div class="hero__frame">
+						<div class="hero__app">
+							<iframe class="hero__demo" title="Tash feed demo" src="demo/feed.html?v=4"></iframe>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="mission" id="mission">
+				<span class="mission__mark" aria-hidden="true"></span>
+				<div class="mission__top">
+				<div class="mission__copy">
+					<h2>Where people talk about the cards and the portfolios.</h2>
+					<p class="mission__body">Tash is shares in professionally managed portfolios of graded cards. The cards stay vaulted. Here, people follow a card, watch a portfolio, and discuss both.</p>
+				</div>
+				<div class="mission__stack">
+					<figure class="mission__holo">
+						<div class="pcard masked lightning interactive" data-rarity="common reverse holo" data-subtypes="basic" data-supertype="pokémon" style="--foil:url(/img/holo/foil-049.webp);--mask:url(/img/holo/mask-049.webp)">
+							<div class="pcard__translater">
+								<div class="pcard__rotator">
+									<div class="pcard__front">
+										<img src="img/holo/pikachu.png" alt="Pikachu reverse holo">
+										<div class="pcard__shine"></div>
+										<div class="pcard__glare"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</figure>
+					<figure class="mission__holo">
+						<div class="pcard masked darkness interactive" data-rarity="uncommon reverse holo" data-subtypes="basic" data-supertype="pokémon" style="--foil:url(/img/holo/foil-116.webp);--mask:url(/img/holo/mask-116.webp)">
+							<div class="pcard__translater">
+								<div class="pcard__rotator">
+									<div class="pcard__front">
+										<img src="img/holo/morpeko.png" alt="Morpeko reverse holo">
+										<div class="pcard__shine"></div>
+										<div class="pcard__glare"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</figure>
+					<figure class="mission__holo">
+						<div class="pcard masked psychic interactive" data-rarity="uncommon reverse holo" data-subtypes="basic" data-supertype="pokémon" style="--foil:url(/img/holo/foil-085.webp);--mask:url(/img/holo/mask-085.webp)">
+							<div class="pcard__translater">
+								<div class="pcard__rotator">
+									<div class="pcard__front">
+										<img src="img/holo/dedenne.png" alt="Dedenne reverse holo">
+										<div class="pcard__shine"></div>
+										<div class="pcard__glare"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</figure>
+				</div>
+				</div>
+				<div class="aud">
+					<div class="aud__nav" role="tablist" aria-label="Who it's for">
+						<button type="button" class="aud__role is-on" role="tab" id="aud-tab-investors" aria-selected="true" aria-controls="aud-panel-investors" data-aud="investors">
+							<span class="aud__glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.5 20V10.2h4.1V20H3.5Zm6.4 0V5.6h4.2V20H9.9Zm6.5 0V2.8H20.5V20h-4.1Z"/></svg></span>
+							Investors
+						</button>
+						<button type="button" class="aud__role" role="tab" id="aud-tab-cards" aria-selected="false" aria-controls="aud-panel-cards" data-aud="cards">
+							<span class="aud__glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="8.6" y="1.6" width="12.6" height="15.2" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="2.4" y="7" width="12.6" height="15.2" rx="1.8"/></svg></span>
+							Card enthusiasts
+						</button>
+						<button type="button" class="aud__role" role="tab" id="aud-tab-sports" aria-selected="false" aria-controls="aud-panel-sports" data-aud="sports">
+							<span class="aud__glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/></svg></span>
+							Sports fans
+						</button>
+						<button type="button" class="aud__role" role="tab" id="aud-tab-collectors" aria-selected="false" aria-controls="aud-panel-collectors" data-aud="collectors">
+							<span class="aud__glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 1.5 3.2 9.2 12 22.5 20.8 9.2 12 1.5Z"/></svg></span>
+							Collectors
+						</button>
+					</div>
+					<div class="aud__stage">
+						<div class="aud__panel is-on" id="aud-panel-investors" role="tabpanel" aria-labelledby="aud-tab-investors">
+							<div class="aud__card">
+								<h3>Watch a managed portfolio.</h3>
+								<p>A Tash portfolio is a professionally managed book of graded cards. The cards stay in the vault. Lena’s page shows her shares of the book, as percentages.</p>
+							</div>
+							<div class="aud__frame">
+								<div class="shot">
+									<aside class="shot__side"><b>tash</b><span>Home</span><span>Portfolio</span><span>Holdings</span><span>Connect</span></aside>
+									<div class="shot__main">
+										<div class="shot__ident"><img src="img/faces/lena.jpg?v=2" alt=""><div><h4>Lena Voss</h4><em>@lenavoss · Vintage investor</em><div class="shot__stats"><span><b>1,284</b> Followers</span><span><b>186</b> Following</span><span><b>8</b> Holdings</span></div></div></div>
+										<div class="shot__holds">
+											<span>CL50 <em>41.9%</em></span>
+											<span>Vintage <em>24.1%</em></span>
+											<span>Mantle ’52 <em>19.2%</em></span>
+											<span>Mays <em>8.4%</em></span>
+											<span>Charizard ’99 <em>6.4%</em></span>
+										</div>
+									</div>
+									<aside class="shot__rail"><div class="shot__donut" style="background:conic-gradient(#e4e4e7 0 41.9%, #d4d4d8 41.9% 66%, #a1a1aa 66% 85.2%, #8d8d93 85.2% 93.6%, #71717a 93.6% 100%)"><b>+1.40%</b><span>Today</span></div><p><strong>Watch portfolio</strong><br>CL50 is managed. The cards inside stay vaulted.</p></aside>
+								</div>
+							</div>
+						</div>
+						<div class="aud__panel" id="aud-panel-cards" role="tabpanel" aria-labelledby="aud-tab-cards">
+							<div class="aud__card">
+								<h3>Follow the card.</h3>
+								<p>Charizard ’99 is one graded holding inside a managed portfolio. Follow the card. Watching the portfolio around it is a separate step, and neither one checks out.</p>
+							</div>
+							<div class="aud__frame">
+								<div class="shot">
+									<aside class="shot__side"><b>tash</b><span>Home</span><span>Markets</span><span>Portfolio</span><span>Connect</span></aside>
+									<div class="shot__main">
+										<div class="shot__who"><img src="img/faces/jordan.jpg?v=2" alt=""><div><strong>Jordan Lee</strong><em>@jordanlee · 2h</em></div></div>
+										<h4>Charizard ’99 is 10% of this portfolio</h4>
+										<p>Base Set, 1999. One graded card, vaulted, inside a managed book.</p>
+										<figure class="shot__photo shot__photo--card"><img src="img/shots/charizard.png" alt="Base Set Charizard"></figure>
+										<div class="shot__pills"><span>Charizard ’99 <em>10% of the book</em></span><span>Pokémon in CL50 <em>12%</em></span></div>
+									</div>
+									<aside class="shot__rail"><img class="shot__face" src="img/faces/mina.jpg?v=2" alt=""><p><strong>Follow card</strong><br>Base Set Charizard, graded and vaulted.</p></aside>
+								</div>
+							</div>
+						</div>
+						<div class="aud__panel" id="aud-panel-sports" role="tabpanel" aria-labelledby="aud-tab-sports">
+							<div class="aud__card">
+								<h3>The card stays in the vault.</h3>
+								<p>Mantle ’52 is a holding inside CL50 and inside Vintage. Follow the card, then open either portfolio. The card does not ship, and the demo does not trade it.</p>
+							</div>
+							<div class="aud__frame">
+								<div class="shot">
+									<aside class="shot__side"><b>tash</b><span>Home</span><span>Insights</span><span>Portfolio</span><span>Connect</span></aside>
+									<div class="shot__main">
+										<div class="shot__who"><img src="img/faces/marcus.jpg?v=2" alt=""><div><strong>Marcus Hale</strong><em>@marcushale · 1h</em></div></div>
+										<h4>Mantle ’52 is still in the portfolio</h4>
+										<p>Vintage’s weight changed. The card stayed in the vault. It’s 17.4% of the book.</p>
+										<figure class="shot__photo"><img src="img/shots/ball.jpg" alt="A packed baseball stadium at night"></figure>
+										<div class="shot__pills"><span>CL50 <em>70% of shares</em></span><span>Vintage <em>30% of shares</em></span><span>Mantle ’52 <em>17.4%</em></span></div>
+									</div>
+									<aside class="shot__rail"><p><strong>Follow card</strong><br>Mantle ’52 is vaulted inside CL50 and Vintage.</p></aside>
+								</div>
+							</div>
+						</div>
+						<div class="aud__panel" id="aud-panel-collectors" role="tabpanel" aria-labelledby="aud-tab-collectors">
+							<div class="aud__card">
+								<h3>Watch the portfolio. Follow the card inside it.</h3>
+								<p>Low-Pop is the managed book. A scarce card inside it is a separate follow. You can talk about either one. Dollar size stays off the page, and so does checkout.</p>
+							</div>
+							<div class="aud__frame">
+								<div class="shot shot--profile">
+									<aside class="shot__side"><b>tash</b><span>Home</span><span>Saved</span><span>Connect</span></aside>
+									<div class="shot__main">
+										<div class="shot__ident"><img src="img/faces/ava.jpg?v=2" alt=""><div><h4>Ava Brooks</h4><em>@avabrooks</em><div class="shot__stats"><span><b>540</b> Followers</span><span><b>77</b> Following</span><span><b>5</b> Holdings</span></div></div></div>
+										<div class="shot__holds"><span>Low-Pop <em>80%</em></span><span>CL50 <em>20%</em></span><span>Vintage overlap <em>0%</em></span></div>
+									</div>
+									<aside class="shot__rail"><img class="shot__face" src="img/faces/sam.jpg?v=2" alt=""><p><strong>Watch portfolio</strong><br>Low-Pop is the book. The cards stay vaulted.</p></aside>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<footer class="mark">
+				<p class="mark__logo">tash</p>
+				<nav class="mark__links" aria-label="Footer">
+					<a href="#top">Home</a>
+					<a href="connect.html#markets">Markets</a>
+					<a href="connect.html#portfolio">Portfolio</a>
+					<a href="connect.html">Connect</a>
+				</nav>
+				<nav class="mark__links" aria-label="Social">
+					<a href="https://x.com" target="_blank" rel="noopener noreferrer">X</a>
+					<a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+					<a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+				</nav>
+			</footer>
+		</main>
+		<script src="js/gsap.min.js"></script>
+		<script src="js/ScrollTrigger.min.js"></script>
+		
+		<!-- Image preloader -->
+		<script src="js/imagesloaded.pkgd.min.js"></script>
+		
+		<!-- Remove the following two lines if you don't want smooth scrolling -->
+		<script src="js/lenis.js"></script>
+		<script src="js/smoothscroll.js?v=2"></script>
+		<script type="module" src="js/index.js?v=35"></script>
+	</body>
+</html>

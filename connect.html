@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Connect — tash talk</title>
+		<link rel="icon" href="favicon.png?v=3" type="image/png">
+		<link rel="shortcut icon" href="favicon.ico?v=3">
+		<link rel="stylesheet" type="text/css" href="css/base.css?v=9" />
+		<link rel="stylesheet" type="text/css" href="css/hero.css?v=33" />
+		<link rel="stylesheet" type="text/css" href="css/connect.css?v=26" />
+	</head>
+	<body class="connect-page">
+		<div class="page-guides" aria-hidden="true"></div>
+		<header class="hero__nav">
+			<a class="hero__brand" href="index.html">tash talk</a>
+			<nav class="hero__links" aria-label="Primary">
+				<a href="index.html">Home</a>
+				<a href="#markets" id="nav-markets">Markets</a>
+				<a href="#portfolio" id="nav-portfolio">Portfolio</a>
+				<a href="connect.html" id="nav-connect" aria-current="page">Connect</a>
+			</nav>
+			<div class="hero__nav-end">
+				<button type="button" class="hero__menu" aria-label="Menu" aria-expanded="false">
+					<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 5h12M2 11h12"/></svg>
+				</button>
+			</div>
+		</header>
+		<div class="connect">
+			<div class="app">
+				<nav class="app__side" aria-label="Connect">
+					<button type="button" class="navbtn" data-side="about"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 8h.01"/></svg>About</button>
+					<button type="button" class="navbtn" data-side="home" aria-current="page"><svg viewBox="0 0 24 24"><path d="M4 11.5 12 4l8 7.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1z"/></svg>Home</button>
+					<button type="button" class="navbtn" data-side="markets"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16"/><path d="m7 15 4-5 3 3 5-7"/></svg>Markets</button>
+					<button type="button" class="navbtn" data-side="portfolio"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 12V4a8 8 0 0 1 8 8z"/></svg>Portfolio</button>
+					<button type="button" class="navbtn" data-side="insights"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4"/><path d="M8 14a5 5 0 1 1 8 0c0 2-1 2.5-1 3H9c0-.5-1-1-1-3z"/></svg>Insights</button>
+					<hr class="app__rule">
+					<button type="button" class="navbtn" data-side="chat"><svg viewBox="0 0 24 24"><path d="M6 17.5 3 20V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2z"/></svg>Chat <span class="app__badge">New</span></button>
+					<hr class="app__rule">
+					<button type="button" class="navbtn" data-side="saved"><svg viewBox="0 0 24 24"><path d="M7 4h10a1 1 0 0 1 1 1v15l-6-3-6 3V5a1 1 0 0 1 1-1z"/></svg>Saved posts</button>
+					<hr class="app__rule">
+					<button type="button" class="navbtn" id="topics-toggle" aria-expanded="true"><svg viewBox="0 0 24 24"><path d="M5 9h14M5 15h14M10 4 8 20M16 4l-2 16"/></svg>Topics <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button>
+					<div id="topic-list">
+						<button type="button" class="navbtn navbtn--topic" data-side="cl50"><i class="swatch tone-investors"></i>CL50</button>
+						<button type="button" class="navbtn navbtn--topic" data-side="lowpop"><i class="swatch tone-cards"></i>Low-Pop</button>
+						<button type="button" class="navbtn navbtn--topic" data-side="vintage"><i class="swatch tone-collectors"></i>Vintage</button>
+					</div>
+					<div class="side-foot">
+						<hr class="app__rule">
+						<button type="button" class="navbtn" data-side="settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.5 1.5M16.9 16.9l1.5 1.5M18.4 5.6l-1.5 1.5M7.1 16.9l-1.5 1.5"/></svg>Settings</button>
+					</div>
+				</nav>
+				<div class="app__feed">
+					<section class="view is-on" data-view="home">
+						<h2 class="screen-title">Connect</h2>
+						<p class="screen-lead">Scroll mock users and influencers. Open someone to see the cards they follow and the portfolios they watch.</p>
+						<div class="people" id="people"></div>
+					</section>
+
+					<section class="view" data-view="about">
+						<h2 class="screen-title">Blossom for Tash</h2>
+						<p class="screen-lead">Tash is shares in professionally managed portfolios of graded cards. A card is a holding inside a portfolio, and it stays vaulted. Here you follow a card, watch a portfolio, and discuss both. This demo is mock data: no checkout, no payments, no live trading.</p>
+						<div class="stats">
+							<div class="stat tone-investors"><b>Shares</b><span>You hold a percentage of a managed portfolio. The page never asks you to buy one.</span></div>
+							<div class="stat tone-cards"><b>Vault</b><span>Follow card is for one graded card. The card stays in the vault.</span></div>
+							<div class="stat tone-collectors"><b>Watch</b><span>Watch portfolio follows the book. It does not move a card or take a payment.</span></div>
+						</div>
+					</section>
+
+					<section class="view" data-view="markets">
+						<div class="mkt">
+							<div class="mkt__list" id="mkt-list"></div>
+							<div class="mkt__stage" id="mkt-stage"></div>
+							<aside class="mkt__mood">
+								<header class="mkt__mood-bar">
+									<h2>Vault mood</h2>
+									<button type="button" class="mkt__info" data-act="moodinfo" aria-label="About vault mood"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 11v5"/><circle cx="12" cy="8" r="0.8" fill="currentColor" stroke="none"/></svg></button>
+								</header>
+								<div class="mood">
+									<div class="gauge">
+										<svg viewBox="0 0 120 120" aria-hidden="true"><path d="M 27.47 92.53 A 46 46 0 1 1 92.53 92.53" fill="none" stroke="#2a2a2c" stroke-width="9" stroke-linecap="round"/><path d="M 27.47 92.53 A 46 46 0 0 1 27.58 27.37" fill="none" stroke="#e4e4e7" stroke-width="9" stroke-linecap="round"/></svg>
+										<div class="gauge__mid"><span>Quiet</span><b>33.40</b></div>
+									</div>
+									<div class="mood__side">
+										<div>
+											<span>1 month ago</span>
+											<b>43.51</b>
+											<div class="gauge gauge--sm"><svg viewBox="0 0 120 120" aria-hidden="true"><path d="M 27.47 92.53 A 46 46 0 1 1 92.53 92.53" fill="none" stroke="#2a2a2c" stroke-width="9" stroke-linecap="round"/><path d="M 27.47 92.53 A 46 46 0 0 1 46.15 16.13" fill="none" stroke="#e4e4e7" stroke-width="9" stroke-linecap="round"/></svg></div>
+											<em>Steady</em>
+										</div>
+										<div>
+											<span>1 year ago</span>
+											<b>29.94</b>
+											<div class="gauge gauge--sm"><svg viewBox="0 0 120 120" aria-hidden="true"><path d="M 27.47 92.53 A 46 46 0 1 1 92.53 92.53" fill="none" stroke="#2a2a2c" stroke-width="9" stroke-linecap="round"/><path d="M 27.47 92.53 A 46 46 0 0 1 22.71 33.07" fill="none" stroke="#e4e4e7" stroke-width="9" stroke-linecap="round"/></svg></div>
+											<em>Quiet</em>
+										</div>
+									</div>
+								</div>
+							</aside>
+						</div>
+						<div class="mkt__lower">
+							<article class="mkt-card">
+								<header class="mkt-card__bar">
+									<button type="button" data-act="samplemonth" aria-label="Previous month"><svg viewBox="0 0 24 24"><path d="m14 6-6 6 6 6"/></svg></button>
+									<b>November notes</b>
+									<button type="button" data-act="samplemonth" aria-label="Next month"><svg viewBox="0 0 24 24"><path d="m10 6 6 6-6 6"/></svg></button>
+									<button type="button" class="mkt-card__link" data-goto="cl50">Dive deeper</button>
+								</header>
+								<div class="cal">
+									<div class="cal__grid" aria-label="November 2026">
+										<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span>
+										<span>8</span><span>9</span><span class="is-on">10</span><span>11</span><span>12</span><span>13</span><span>14</span>
+										<span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span>
+										<span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span>
+										<span>29</span><span>30</span>
+									</div>
+									<div class="cal__events">
+										<div><i>CL</i><b>CL50</b><span>Core book</span></div>
+										<div><i>M</i><b>Mantle</b><span>Vaulted</span></div>
+										<div><i>C</i><b>Charizard</b><span>10% of a book</span></div>
+									</div>
+								</div>
+							</article>
+							<article class="mkt-card">
+								<header class="mkt-card__bar">
+									<b>Daily buzz</b>
+									<button type="button" class="mkt-card__link" data-side="home">View more</button>
+								</header>
+								<div class="buzz">
+									<article>
+										<img src="/img/faces/lena.jpg?v=2" alt="">
+										<div><em>Lena Voss · 2h</em><h3>CL50 is the book people opened today</h3><p>The mock move is +0.86%. Mantle ’52 is still vaulted inside it. This is not an order.</p><span>21 reactions · 3 comments</span></div>
+									</article>
+									<article>
+										<img src="/img/faces/jordan.jpg?v=2" alt="">
+										<div><em>Jordan Lee · 5h</em><h3>Follow the Charizard, then look at the book</h3><p>Base Set Charizard is 10% of one managed portfolio. The card stays in the vault.</p><span>8 reactions · 1 comment</span></div>
+									</article>
+								</div>
+							</article>
+						</div>
+					</section>
+
+					<section class="view" data-view="portfolio">
+						<div class="pf__bar">
+							<button type="button" class="pf__tab is-on">All</button>
+							<div class="pf__filters">
+								<button type="button" class="pf__chip" data-act="paperonly">Percentages</button>
+								<span class="pf__chip" id="book-lead">Showing: your shares</span>
+							</div>
+						</div>
+						<div class="pf__top">
+							<div class="pf__value" id="book"></div>
+							<div class="pf__side">
+								<div class="pf__returns">
+									<article class="pf__card"><span>Today</span><b>+0.40%</b><em>Today</em></article>
+									<article class="pf__card"><span>Since you started</span><b>+6.20%</b><em>All time</em></article>
+								</div>
+								<div class="pf__actions">
+									<button type="button" data-act="followcard" data-sym="MANT"><svg viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="2"/></svg><span>Follow card</span></button>
+									<button type="button" data-act="watchbook" data-sym="CL50"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 12V4a8 8 0 0 1 8 8z"/></svg><span>Watch portfolio</span></button>
+									<button type="button" data-act="visibility"><svg viewBox="0 0 24 24"><path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6S2 12 2 12z"/><circle cx="12" cy="12" r="2.5"/></svg><span>Holding visibility</span></button>
+									<button type="button" data-act="discuss"><svg viewBox="0 0 24 24"><path d="M6 17.5 3 20V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2z"/></svg><span>Discuss</span></button>
+								</div>
+							</div>
+						</div>
+						<div class="pf__head">
+							<h2>Holdings</h2>
+							<button type="button" class="pf__chip" id="pf-sort" data-act="sortbook">Sort: Share</button>
+						</div>
+						<div class="pf__list" id="look"></div>
+					</section>
+
+					<section class="view" data-view="insights">
+						<h2 class="screen-title">Insights</h2>
+						<p class="screen-lead">What the sample books have in common.</p>
+						<div class="stats">
+							<div class="stat tone-sports"><b>19.2%</b><span>Mantle ’52 overlap between CL50 and Vintage.</span></div>
+							<div class="stat tone-cards"><b>0%</b><span>Cards shared by Low-Pop and Vintage.</span></div>
+							<div class="stat tone-collectors"><b>12%</b><span>Pokémon’s slice of CL50 in the creator book.</span></div>
+						</div>
+						<article class="sheet">
+							<h2>Where it sits</h2>
+							<div class="row"><span>CL50 × Vintage</span><b>Mantle ’52, Mays</b></div>
+							<div class="row"><span>CL50 × Pokémon</span><b>Charizard ’99</b></div>
+							<div class="row"><span>Low-Pop × Vintage</span><b>No shared cards</b></div>
+							<div class="row"><span>After a 70/30 mix</span><b>Mantle is still 17.4%</b></div>
+						</article>
+					</section>
+
+					<section class="view" data-view="chat">
+						<h2 class="screen-title">Chat</h2>
+						<p class="screen-lead">Threads from the feed.</p>
+						<div class="chat">
+							<div>
+								<button type="button" class="chat__person" data-thread="su" aria-current="true"><img class="avatar avatar--sm" src="/img/faces/lena.jpg?v=2" alt=""><span><b>Lena Voss</b>Following Mantle. The card stays vaulted.</span></span></button>
+								<button type="button" class="chat__person" data-thread="sc"><img class="avatar avatar--sm" src="/img/faces/jordan.jpg?v=2" alt=""><span><b>Jordan Lee</b>Charizard is 10% of the portfolio.</span></span></button>
+								<button type="button" class="chat__person" data-thread="s2"><img class="avatar avatar--sm" src="/img/faces/mina.jpg?v=2" alt=""><span><b>Mina Okada</b>Low-pop and vintage don’t share a card.</span></span></button>
+							</div>
+							<div class="chat__thread">
+								<div class="chat__log" data-log="su"><div class="bubble"><b>Lena Voss</b>Saw your Mantle post. I’m following the card. It stays in the vault either way.</div></div>
+								<div class="chat__log" data-log="sc" hidden><div class="bubble"><b>Jordan Lee</b>Posted the Charizard. It’s 10% of the portfolio. Follow the card if that’s the print you want to talk about.</div></div>
+								<div class="chat__log" data-log="s2" hidden><div class="bubble"><b>Mina Okada</b>Split mine in half. Low-pop and vintage don’t share a single card.</div></div>
+								<form class="chat__form"><input name="text" placeholder="Message" /><button type="submit" class="app__btn">Send</button></form>
+							</div>
+						</div>
+					</section>
+
+					<section class="view" data-view="saved">
+						<h2 class="screen-title">Saved posts</h2>
+						<p class="screen-lead">Posts you kept about a card or a portfolio.</p>
+						<div id="saved"></div>
+					</section>
+
+					<section class="view" data-view="topic">
+						<h2 class="screen-title" id="topic-title">CL50</h2>
+						<p class="screen-lead" id="topic-lead"></p>
+						<div id="topic"></div>
+					</section>
+
+					<section class="view" data-view="settings">
+						<h2 class="screen-title">Settings</h2>
+						<p class="screen-lead">Signed in as Sam Rivera · @samrivera</p>
+						<div class="sheet">
+							<div class="switch"><span>Mock data. Percentages only, no checkout.</span><button type="button" class="app__btn" id="paper" aria-pressed="true">On</button></div>
+							<div class="switch"><span>Portfolio visibility</span><button type="button" class="app__btn app__btn--ghost" id="privacy">Public</button></div>
+						</div>
+					</section>
+
+					<section class="view" data-view="profile">
+						<div id="profile"></div>
+					</section>
+				</div>
+				<aside class="app__rail">
+					<div class="rail-home">
+					<div class="join">
+						<h2>Discuss a managed portfolio</h2>
+						<div class="join__body">
+							Post about a book to:
+							<ul>
+								<li>Show the vaulted cards inside it</li>
+								<li>Keep the post to percentages</li>
+								<li>Let someone watch the portfolio or follow a card</li>
+							</ul>
+							<button type="button" class="app__btn" id="post-book">Post portfolio</button>
+							<button type="button" class="app__btn app__btn--ghost" id="keep">Keep private</button>
+						</div>
+					</div>
+					<div class="join">
+						<h2>Who to follow</h2>
+						<div class="join__body" id="suggest"></div>
+					</div>
+					</div>
+					<div class="rail-profile" id="rail-profile" hidden></div>
+				</aside>
+			</div>
+		</div>
+		<div class="toast" id="toast" role="status"></div>
+		<script>
+			const esc = (value) => String(value).replace(/[&<>"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[char]));
+			const hold = (sym, pct) => ({ sym, pct });
+			const posts = [
+				{
+					id: "p1", av: "LV", name: "Lena Voss", handle: "@lenavoss", sub: "Vintage · 4h",
+					shot: { src: "/img/shots/ball.jpg", alt: "A packed baseball stadium at night", caption: "Mantle ’52, from the ballpark" },
+					title: "Took this at the park. Mantle is still the card.",
+					body: "Went for the game and ended up on the card. Mantle ’52 is graded and vaulted. He sits inside Vintage and inside CL50, so opening either portfolio shows him twice.\n\nI’m watching both books. Mantle is 19.2% of Vintage. Follow the card if that’s the one you came for. The share is public. This demo does not trade it.",
+					ticks: [hold("CL50", "60%"), hold("VINT", "40%"), hold("MANT", "19.2%")],
+					likes: 21, comments: [
+						{ name: "Jordan Lee", text: "This is why I post the Charizard itself. The set name hides the card." },
+						{ name: "Mina Okada", text: "My low-pop and vintage don’t share a single card. Different problem." },
+						{ name: "Marcus Hale", text: "Following the card. The rest of Vintage can move around it." }
+					],
+					reposts: 4, views: "340", topics: ["cl50", "vintage"],
+					copy: "CL50 60% · Vintage 40%",
+					look: [["Mantle ’52", "19.2%"], ["Mays", "8.4%"], ["Rest of book", "72.4%"]]
+				},
+				{
+					id: "p2", av: "JL", name: "Jordan Lee", handle: "@jordanlee", sub: "Cards · 2h",
+					shot: { src: "/img/shots/charizard.png", alt: "Base Set Charizard", caption: "Base Set Charizard · 10% of one portfolio", card: true },
+					title: "Posting the card, not the portfolio",
+					body: "People keep asking what Pokémon actually is inside the book. It’s this. Base Set Charizard is a graded card in the vault, 10% of one managed portfolio. Everything else Pokémon inside CL50 is another 2%.\n\nFollow the card. Watch CL50 if you want the book around it. The percentage is public. This demo does not trade it.",
+					ticks: [hold("CHAR", "10%"), hold("CL50", "12%")],
+					plate: "Charizard ’99",
+					likes: 8, comments: [{ name: "Lena Voss", text: "Following the card. That’s the print I’d open the thread for." }],
+					reposts: 2, views: "120", topics: ["cl50"],
+					copy: "Charizard ’99 10% · Pokémon 12% of CL50",
+					look: [["Charizard ’99", "10%"], ["Rest of Pokémon", "2% of CL50"], ["Other cards", "88%"]]
+				},
+				{
+					id: "p3", av: "MO", name: "Mina Okada", handle: "@minaokada", sub: "Low-pop · 12m",
+					title: "Who else keeps scarce cards away from vintage?",
+					body: "Half my shares are in Low-Pop and half are in Vintage, and the two portfolios don’t hold the same card. I watch both because opening them is how you see that.\n\nThe cards stay vaulted. I’m posting the mix, not a bid.",
+					ticks: [hold("LPOP", "50%"), hold("VINT", "50%"), hold("OVLP", "0%")],
+					likes: 6, comments: [{ name: "Marcus Hale", text: "Watching both. I still want Mantle inside Vintage." }],
+					reposts: 1, views: "86", topics: ["lowpop", "vintage"],
+					copy: "Low-Pop 50% · Vintage 50%",
+					look: [["Shared cards", "None"], ["Low-Pop sleeve", "50%"], ["Vintage sleeve", "50%"]]
+				},
+				{
+					id: "p4", av: "MH", name: "Marcus Hale", handle: "@marcushale", sub: "Sports · 1h",
+					title: "Vintage moved. Mantle stayed.",
+					body: "Lena’s post sent me back into the two portfolios. CL50 is 70% of my shares and Vintage is 30%. Mantle went from 19.2% of the book to 17.4%.\n\nThe card never left the vault. I follow Mantle, so that holding is the one I keep talking about.",
+					ticks: [hold("CL50", "70%"), hold("VINT", "30%"), hold("MANT", "17.4%")],
+					likes: 14, comments: [{ name: "Lena Voss", text: "The card stays. Still following it." }],
+					reposts: 3, views: "210", topics: ["cl50", "vintage"],
+					copy: "CL50 70% · Vintage 30%",
+					look: [["Mantle ’52", "17.4%"], ["Mays", "6.1%"], ["Rest of book", "76.5%"]]
+				},
+				{
+					id: "p5", av: "AB", name: "Ava Brooks", handle: "@avabrooks", sub: "Low-pop · 3h",
+					shot: { src: "/img/shots/pikachu.png", alt: "Base Set Pikachu", caption: "Base Set Pikachu, in its own sleeve", card: true },
+					title: "This Pikachu has its own sleeve",
+					body: "Low-Pop is 80% of my shares. A little CL50, and no Vintage on purpose. Pikachu is one graded card inside Low-Pop, and it stays in the vault.\n\nFollow the card if scarce prints are why you’re here. Watch Low-Pop if you want the whole book.",
+					ticks: [hold("LPOP", "80%"), hold("CL50", "20%"), hold("VINT", "0%")],
+					likes: 11, comments: [],
+					reposts: 1, views: "164", topics: ["lowpop", "cl50"],
+					copy: "Low-Pop 80% · CL50 20%",
+					look: [["Vintage overlap", "0%"], ["CL50 sleeve", "20%"], ["Low-Pop", "80%"]]
+				}
+			];
+			const topics = {
+				cl50: ["CL50", "A managed portfolio of fifty graded cards. The posts here are about a card inside it. The cards stay vaulted."],
+				lowpop: ["Low-Pop", "A managed portfolio of scarce prints. People watch it beside Vintage and follow the card they came for."],
+				vintage: ["Vintage", "A managed portfolio. Mantle ’52 is the vaulted card everyone keeps following."]
+			};
+			const TONE = { CL50: "investors", VINT: "collectors", MANT: "sports", MAYS: "sports", CHAR: "cards", LPOP: "cards", OVLP: "investors" };
+			const toneOf = (sym) => TONE[sym] || "investors";
+			const BOOKS = new Set(["CL50", "VINT", "LPOP", "SPRT", "ROOK"]);
+			const CARDS = new Set(["MANT", "MAYS", "CHAR"]);
+			const TRACK_NAME = { CL50: "CL50", VINT: "Vintage", LPOP: "Low-Pop", SPRT: "Sports", ROOK: "Rookies", MANT: "Mantle ’52", MAYS: "Mays", CHAR: "Charizard ’99" };
+			const trackOn = (sym) => (CARDS.has(sym) ? state.cards : state.watched).has(sym);
+			const trackLabel = (sym) => CARDS.has(sym) ? (trackOn(sym) ? "Following card" : "Follow card") : BOOKS.has(sym) ? (trackOn(sym) ? "Watching" : "Watch portfolio") : "";
+			const trackBtn = (sym) => {
+				const label = trackLabel(sym);
+				if (!label) return "";
+				const act = CARDS.has(sym) ? "followcard" : "watchbook";
+				return `<button type="button" class="tick__act${trackOn(sym) ? " is-on" : ""}" data-act="${act}" data-sym="${esc(sym)}">${label}</button>`;
+			};
+			const slice = (sym, name, pct, ch) => ({ sym, name, pct, ch, tone: toneOf(sym) });
+			const profiles = {
+				"@lenavoss": {
+					name: "Lena Voss", av: "LV", photo: "/img/faces/lena.jpg?v=2", tone: "collectors", pro: false, verified: true,
+					followers: "1,284", following: "186", holdings: 8, influencer: true,
+					badges: ["Vintage", "Managed book", "Verified"],
+					lines: ["Watches Vintage and CL50", "Follows Mantle ’52. The card stays vaulted.", "60% CL50, 40% Vintage", "The percentage is public. This is not a trade."],
+					link: "tash.talk/lenavoss", day: "+1.40%",
+					slices: [slice("CL50", "Fifty card index", 41.9, "+2.28%", "#dcb3ff"), slice("VINT", "Vintage book", 24.1, "+2.32%", "#ffeaaf"), slice("MANT", "Mantle ’52", 19.2, "+1.10%", "#a6e2fe"), slice("MAYS", "Mays", 8.4, "+0.80%", "#ffc4c5"), slice("CHAR", "Charizard ’99", 6.4, "+2.56%", "#8d8d93")],
+					trades: [
+						{ id: "lv1", verb: "Lowered", sym: "VINT", name: "Vintage", kind: "down", note: "portfolio weight by 15.9%", from: "40.0%", to: "24.1%", when: "4d", likes: 6, comments: 1, reposts: 0, views: "128" },
+						{ id: "lv2", verb: "Raised", sym: "CL50", name: "CL50", kind: "up", note: "portfolio weight by 5.9%", from: "36.0%", to: "41.9%", when: "10d", likes: 11, comments: 2, reposts: 1, views: "240" },
+						{ id: "lv3", verb: "Added", sym: "MANT", name: "Mantle ’52", kind: "new", note: "Vaulted card", from: "0.00%", to: "19.2%", when: "12d", likes: 18, comments: 3, reposts: 2, views: "410" }
+					],
+					look: [["Mantle ’52", "19.2%"], ["Mays", "8.4%"], ["Rest of book", "72.4%"]]
+				},
+				"@jordanlee": {
+					name: "Jordan Lee", av: "JL", photo: "/img/faces/jordan.jpg?v=2", tone: "cards", pro: true, verified: false,
+					followers: "842", following: "64", holdings: 6, influencer: true,
+					badges: ["Community", "PRO", "Managed book"],
+					lines: ["Follows Charizard ’99", "The card is 10% of one managed portfolio", "He posts the card, then the percentage."],
+					link: "tash.talk/jordanlee", day: "+2.10%",
+					slices: [slice("CHAR", "Charizard ’99", 34, "+2.56%", "#ffc4c5"), slice("CL50", "Pokémon slice of CL50", 28, "+2.32%", "#dcb3ff"), slice("VINT", "Vintage sleeve", 18, "+1.40%", "#ffeaaf"), slice("LPOP", "Low-Pop", 12, "+0.90%", "#a6e2fe"), slice("MANT", "Mantle ’52", 8, "+0.40%", "#8d8d93")],
+					trades: [
+						{ id: "jl1", verb: "Added", sym: "CHAR", name: "Charizard ’99", kind: "new", note: "Vaulted card", from: "0.00%", to: "10.0%", when: "2h", likes: 8, comments: 1, reposts: 2, views: "120" },
+						{ id: "jl2", verb: "Raised", sym: "CHAR", name: "Charizard ’99", kind: "up", note: "portfolio weight by 24%", from: "10.0%", to: "34.0%", when: "6d", likes: 14, comments: 2, reposts: 1, views: "306" }
+					],
+					look: [["Charizard ’99", "10%"], ["Rest of Pokémon", "2% of CL50"], ["Other cards", "88%"]]
+				},
+				"@minaokada": {
+					name: "Mina Okada", av: "MO", photo: "/img/faces/mina.jpg?v=2", tone: "cards", pro: false, verified: false,
+					followers: "310", following: "91", holdings: 4,
+					badges: ["Low-Pop", "Managed book"],
+					lines: ["Watches Low-Pop and Vintage", "The two portfolios share no card.", "Every card in them stays vaulted."],
+					link: "tash.talk/minaokada", day: "+0.20%",
+					slices: [slice("LPOP", "Low-Pop", 50, "+0.40%", "#a6e2fe"), slice("VINT", "Vintage book", 50, "0.00%", "#ffeaaf")],
+					trades: [
+						{ id: "mo1", verb: "Added", sym: "LPOP", name: "Low-Pop", kind: "new", note: "Managed portfolio", from: "0.00%", to: "50.0%", when: "12m", likes: 4, comments: 0, reposts: 0, views: "64" },
+						{ id: "mo2", verb: "Added", sym: "VINT", name: "Vintage", kind: "new", note: "Managed portfolio", from: "0.00%", to: "50.0%", when: "2d", likes: 3, comments: 1, reposts: 0, views: "51" }
+					],
+					look: [["Shared cards", "None"], ["Low-Pop sleeve", "50%"], ["Vintage sleeve", "50%"]]
+				},
+				"@marcushale": {
+					name: "Marcus Hale", av: "MH", photo: "/img/faces/marcus.jpg?v=2", tone: "collectors", pro: false, verified: true,
+					followers: "976", following: "120", holdings: 7, influencer: true,
+					badges: ["Vintage", "Verified", "Managed book"],
+					lines: ["Follows Mantle ’52. The card stays vaulted.", "Watches CL50 and Vintage.", "Vintage is 30% of his shares now."],
+					link: "tash.talk/marcushale", day: "+1.10%",
+					slices: [slice("CL50", "Fifty card index", 70, "+2.28%", "#dcb3ff"), slice("VINT", "Vintage book", 30, "+1.10%", "#ffeaaf")],
+					trades: [
+						{ id: "mh1", verb: "Lowered", sym: "VINT", name: "Vintage", kind: "down", note: "portfolio weight by 10%", from: "40.0%", to: "30.0%", when: "1h", likes: 9, comments: 1, reposts: 1, views: "188" },
+						{ id: "mh2", verb: "Lowered", sym: "MANT", name: "Mantle ’52", kind: "down", note: "portfolio weight by 1.8%", from: "19.2%", to: "17.4%", when: "1h", likes: 7, comments: 1, reposts: 0, views: "142" }
+					],
+					look: [["Mantle ’52", "17.4%"], ["Mays", "6.1%"], ["Rest of book", "76.5%"]]
+				},
+				"@avabrooks": {
+					name: "Ava Brooks", av: "AB", photo: "/img/faces/ava.jpg?v=2", tone: "cards", pro: false, verified: false,
+					followers: "540", following: "77", holdings: 5,
+					badges: ["Low-Pop", "Managed book"],
+					lines: ["Watches Low-Pop", "Pikachu is a vaulted card inside it.", "80% of her shares. No Vintage."],
+					link: "tash.talk/avabrooks", day: "+0.60%",
+					slices: [slice("LPOP", "Low-Pop", 80, "+0.90%", "#a6e2fe"), slice("CL50", "CL50 sleeve", 20, "+1.20%", "#dcb3ff")],
+					trades: [
+						{ id: "ab1", verb: "Raised", sym: "LPOP", name: "Low-Pop", kind: "up", note: "portfolio weight by 20%", from: "60.0%", to: "80.0%", when: "3h", likes: 5, comments: 0, reposts: 1, views: "97" },
+						{ id: "ab2", verb: "Added", sym: "CL50", name: "CL50", kind: "new", note: "Managed portfolio", from: "0.00%", to: "20.0%", when: "5d", likes: 4, comments: 0, reposts: 0, views: "73" }
+					],
+					look: [["Vintage overlap", "0%"], ["CL50 sleeve", "20%"], ["Low-Pop", "80%"]]
+				},
+				"@samrivera": {
+					name: "Sam Rivera", av: "SR", photo: "/img/faces/sam.jpg?v=2", tone: "investors", pro: false, verified: false,
+					followers: "12", following: "2", holdings: 3,
+					badges: ["Managed book"],
+					lines: ["Watches CL50 and Vintage", "Follows Mantle ’52. The card stays vaulted.", "Shares are mock percentages. No checkout."],
+					link: "tash.talk/samrivera", day: "+0.40%",
+					slices: [slice("CL50", "Fifty card index", 60, "+1.20%", "#dcb3ff"), slice("VINT", "Vintage book", 40, "+0.40%", "#ffeaaf")],
+					trades: [
+						{ id: "sr1", verb: "Added", sym: "CL50", name: "CL50", kind: "new", note: "Managed portfolio", from: "0.00%", to: "60.0%", when: "1d", likes: 1, comments: 0, reposts: 0, views: "12" },
+						{ id: "sr2", verb: "Added", sym: "VINT", name: "Vintage", kind: "new", note: "Managed portfolio", from: "0.00%", to: "40.0%", when: "1d", likes: 0, comments: 0, reposts: 0, views: "9" }
+					],
+					look: [["Mantle ’52", "19.2%"], ["Mays", "8.4%"], ["Rest of book", "72.4%"]]
+				},
+				"@priyashah": {
+					name: "Priya Shah", av: "PS", tone: "sports", pro: false, verified: true,
+					followers: "2,140", following: "88", holdings: 5, influencer: true,
+					badges: ["Vintage", "Verified"],
+					lines: ["Influencer for vaulted sports cards.", "Follows Mantle ’52 and watches Vintage."],
+					link: "tash.talk/priyashah", day: "+0.90%",
+					slices: [slice("MANT", "Mantle ’52", 28, "+1.10%", "#a6e2fe"), slice("VINT", "Vintage book", 46, "+0.80%", "#ffeaaf"), slice("CL50", "Fifty card index", 26, "+0.40%", "#dcb3ff")],
+					trades: [],
+					look: [["Mantle ’52", "28%"], ["Rest of Vintage", "72%"]]
+				},
+				"@chrisadeyemi": {
+					name: "Chris Adeyemi", av: "CA", tone: "collectors", pro: true, verified: false,
+					followers: "1,608", following: "41", holdings: 6, influencer: true,
+					badges: ["Community", "PRO"],
+					lines: ["Talks through graded vintage books.", "Watches Vintage. The cards stay vaulted."],
+					link: "tash.talk/chrisadeyemi", day: "+1.20%",
+					slices: [slice("VINT", "Vintage book", 70, "+1.40%", "#ffeaaf"), slice("MAYS", "Mays", 18, "+0.60%", "#a6e2fe"), slice("CL50", "Fifty card index", 12, "+0.30%", "#dcb3ff")],
+					trades: [],
+					look: [["Mays", "18%"], ["Rest of Vintage", "82%"]]
+				},
+				"@noahpark": {
+					name: "Noah Park", av: "NP", tone: "cards", pro: false, verified: false,
+					followers: "96", following: "40", holdings: 3,
+					badges: ["Community"],
+					lines: ["Mock user following Charizard ’99.", "Watches CL50 for the rest of the book."],
+					link: "tash.talk/noahpark", day: "+0.30%",
+					slices: [slice("CHAR", "Charizard ’99", 22, "+2.10%", "#ffc4c5"), slice("CL50", "Fifty card index", 78, "+0.50%", "#dcb3ff")],
+					trades: [],
+					look: [["Charizard ’99", "22%"], ["Rest of CL50", "78%"]]
+				},
+				"@elenaruiz": {
+					name: "Elena Ruiz", av: "ER", tone: "investors", pro: false, verified: false,
+					followers: "64", following: "19", holdings: 2,
+					badges: ["Managed book"],
+					lines: ["Mock user watching CL50.", "Shares only. No checkout in this demo."],
+					link: "tash.talk/elenaruiz", day: "+0.10%",
+					slices: [slice("CL50", "Fifty card index", 100, "+0.40%", "#dcb3ff")],
+					trades: [],
+					look: [["CL50", "100%"]]
+				}
+			};
+			const watchlist = [
+				["CL50", "Fifty cards", "+0.40%"],
+				["VINT", "Vintage book", "+6.45%"],
+				["MANT", "Mantle ’52", "+5.09%"],
+				["CHAR", "Charizard ’99", "+5.41%"],
+				["LPOP", "Low-Pop", "+1.20%"]
+			];
+			const state = {
+				following: new Set(["@marcushale", "@avabrooks"]),
+				saved: new Set(["p4"]),
+				liked: new Set(),
+				reposted: new Set(),
+				open: null,
+				more: new Set(),
+				topic: "cl50",
+				tool: null,
+				attached: false,
+				book: posts[0],
+				holdSort: "share",
+				cards: new Set(),
+				watched: new Set(),
+				market: "cl50",
+				range: "5D",
+				person: "@lenavoss",
+				focus: null,
+				ptab: "posts",
+				returnTo: "home"
+			};
+			const feed = document.querySelector("#feed");
+			const followingEl = document.querySelector("#following");
+			const peopleEl = document.querySelector("#people");
+			const savedEl = document.querySelector("#saved");
+			const topicBox = document.querySelector("#topic");
+			const suggest = document.querySelector("#suggest");
+			const bookEl = document.querySelector("#book");
+			const lookEl = document.querySelector("#look");
+			const input = document.querySelector(".composer__input");
+			const attach = document.querySelector("#attach");
+			const publish = document.querySelector("#publish");
+			const toast = document.querySelector("#toast");
+			let toastTimer = 0;
+			const icon = {
+				heart: '<svg viewBox="0 0 24 24"><path d="M12 19s-7-4.4-7-9a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 4.6-7 9-7 9z"/></svg>',
+				comment: '<svg viewBox="0 0 24 24"><path d="M6 17.5 3 20V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2z"/></svg>',
+				repost: '<svg viewBox="0 0 24 24"><path d="M7 7h11l-3-3M17 17H6l3 3"/></svg>',
+				bookmark: '<svg viewBox="0 0 24 24"><path d="M7 4h10a1 1 0 0 1 1 1v15l-6-3-6 3V5a1 1 0 0 1 1-1z"/></svg>'
+			};
+			const ticksHTML = (list) => `<div class="ticks">${list.map((item) => `<span class="tick tone-${toneOf(item.sym)}">${esc(item.sym)} <span>${esc(item.pct)}</span>${trackBtn(item.sym)}</span>`).join("")}</div>`;
+			const portrait = (person) => person && person.photo ? `<img src="${esc(person.photo)}" alt="">` : esc(person ? person.av : "");
+			const personCard = (handle) => {
+				const person = profiles[handle];
+				const followed = state.following.has(handle);
+				const kind = person.influencer ? "Influencer" : "Mock user";
+				return `<article class="person"><button type="button" class="person__face hit" data-act="profile" data-handle="${esc(handle)}" aria-label="${esc(person.name)}">${portrait(person)}</button><div class="person__main"><div class="person__top"><button type="button" class="hit" data-act="profile" data-handle="${esc(handle)}"><b>${esc(person.name)}</b> <span class="handle">${esc(handle)}</span></button><span class="pill">${kind}</span><button type="button" class="app__btn follow${followed ? " app__btn--ghost" : ""}" data-act="follow" data-handle="${esc(handle)}">${followed ? "Following" : "Follow"}</button></div><p>${esc(person.lines[0] || "")}</p><div class="pstats"><div><b>${esc(person.followers)}</b><span>Followers</span></div><div><b>${esc(person.following)}</b><span>Following</span></div><div><b>${person.holdings}</b><span>Holdings</span></div></div></div></article>`;
+			};
+			const faceFor = (name) => {
+				const person = Object.values(profiles).find((item) => item.name === name);
+				return person && person.photo ? `<img class="comment__face" src="${esc(person.photo)}" alt="">` : "";
+			};
+			const shotHTML = (shot) => shot ? `<figure class="shot${shot.card ? " shot--card" : ""}"><img src="${esc(shot.src)}" alt="${esc(shot.alt || "")}"><figcaption>${esc(shot.caption || "")}</figcaption></figure>` : "";
+			const postHTML = (post, opts = {}) => {
+				const mine = post.handle === "@samrivera";
+				const personTone = profiles[post.handle] ? profiles[post.handle].tone : "investors";
+				const followed = state.following.has(post.handle);
+				const follow = mine ? "" : `<button type="button" class="app__btn follow${followed ? " app__btn--ghost" : ""}" data-act="follow" data-handle="${esc(post.handle)}">${followed ? "Following" : "Follow"}</button>`;
+				const paragraphs = post.body.split("\n").filter(Boolean);
+				const long = paragraphs.length > 1;
+				const open = state.more.has(post.id);
+				const shown = opts.full || !long || open ? paragraphs : paragraphs.slice(0, 1);
+				const notes = state.open === post.id ? `<div class="comments">${post.comments.map((note) => `<div class="comment">${faceFor(note.name)}<div><b>${esc(note.name)}</b> ${esc(note.text)}</div></div>`).join("")}<form class="reply" data-id="${post.id}"><input name="text" placeholder="Add a comment" /><button class="app__btn" type="submit">Reply</button></form></div>` : "";
+				const commentLabel = post.comments.length === 1 ? "1" : String(post.comments.length);
+				const title = opts.linked ? `<h2><button type="button" class="hit" data-act="openpost" data-id="${post.id}">${esc(post.title)}</button></h2>` : `<h2>${esc(post.title)}</h2>`;
+				const photo = post.shot ? shotHTML(post.shot) : opts.photo && post.plate ? `<div class="post__plate"><span>${esc(post.plate)}</span><b>10% held</b></div>` : "";
+				const who = profiles[post.handle];
+				return `<article class="post${open ? " is-open" : ""}"><div class="post__top"><button type="button" class="avatar hit tone-${personTone}" data-act="profile" data-handle="${esc(post.handle)}" aria-label="${esc(post.name)}">${portrait(who) || esc(post.av)}</button><div class="who"><button type="button" class="hit" data-act="profile" data-handle="${esc(post.handle)}"><b>${esc(post.name)}</b> <span class="handle">${esc(post.handle)}</span></button><div class="sub">${esc(post.sub)}</div></div>${follow}</div>${title}<p class="body">${shown.map((part) => esc(part)).join("<br><br>")}</p>${long && !opts.full ? `<button type="button" class="more" data-act="more" data-id="${post.id}">${open ? "Show less" : "Read more"}</button>` : ""}${photo}${post.extra ? `<div class="tick" style="margin-top:12px">${esc(post.extra)}</div>` : ""}${ticksHTML(post.ticks)}<div class="actions"><button type="button" data-act="like" data-id="${post.id}" class="${state.liked.has(post.id) ? "is-on" : ""}">${icon.heart}<span>${post.likes + (state.liked.has(post.id) ? 1 : 0)}</span></button><button type="button" data-act="comment" data-id="${post.id}">${icon.comment}<span>${commentLabel}</span></button><button type="button" data-act="repost" data-id="${post.id}" class="${state.reposted.has(post.id) ? "is-on" : ""}">${icon.repost}<span>${post.reposts + (state.reposted.has(post.id) ? 1 : 0)}</span></button><button type="button" data-act="save" data-id="${post.id}" class="${state.saved.has(post.id) ? "is-on" : ""}">${icon.bookmark}</button><span class="end">${esc(post.views)} views</span></div>${notes}</article>`;
+			};
+			const people = () => {
+				const seen = new Set();
+				return posts.filter((post) => {
+					if (post.handle === "@samrivera" || seen.has(post.handle)) return false;
+					seen.add(post.handle);
+					return true;
+				});
+			};
+			const tradeHTML = (trade, person, handle) => {
+				const mine = handle === "@samrivera";
+				const followed = state.following.has(handle);
+				const follow = mine ? "" : `<button type="button" class="app__btn follow${followed ? " app__btn--ghost" : ""}" data-act="follow" data-handle="${esc(handle)}">${followed ? "Following" : "Follow"}</button>`;
+				const mark = person.pro ? ` <span class="pill">PRO</span>` : person.verified ? ` <span class="pill">Verified</span>` : "";
+				const photo = { CHAR: "/img/shots/charizard.png", MANT: "/img/shots/ball.jpg" }[trade.sym];
+				const badge = photo ? `<img src="${photo}" alt="">` : esc(trade.sym.slice(0, 1));
+				const glyph = trade.kind === "new" ? "★" : trade.kind === "down" ? "↓" : "↑";
+				const on = (set, id) => set.has(id) ? " is-on" : "";
+				return `<article class="trade"><div class="trade__top"><button type="button" class="avatar hit tone-${person.tone}" data-act="profile" data-handle="${esc(handle)}" aria-label="${esc(person.name)}">${portrait(person)}</button><div class="who"><button type="button" class="hit" data-act="profile" data-handle="${esc(handle)}"><b>${esc(person.name)}</b>${mark} <span class="handle">${esc(handle)}</span></button><div class="sub">${esc(trade.when)}</div></div>${follow}</div><div class="deal"><div class="deal__buy"><b class="deal__verb">${esc(trade.verb)}</b><div class="deal__asset"><span class="deal__mark">${badge}</span><span>${esc(trade.name)}</span></div>${trackBtn(trade.sym)}<span class="deal__note">${glyph} ${esc(trade.note)}</span></div><div class="deal__shift"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg><b>${esc(trade.from)} → ${esc(trade.to)}</b><span>of the portfolio</span></div></div><p class="deal__verify">Noted by Tash · not an order</p><div class="actions"><button type="button" data-act="tlike" data-id="${esc(trade.id)}" class="${on(state.liked, trade.id).trim()}">${icon.heart}<span>${trade.likes + (state.liked.has(trade.id) ? 1 : 0)}</span></button><button type="button" data-act="tcomment" data-id="${esc(trade.id)}">${icon.comment}<span>${trade.comments}</span></button><button type="button" data-act="trepost" data-id="${esc(trade.id)}" class="${on(state.reposted, trade.id).trim()}">${icon.repost}<span>${trade.reposts + (state.reposted.has(trade.id) ? 1 : 0)}</span></button><button type="button" data-act="tsave" data-id="${esc(trade.id)}" class="${on(state.saved, trade.id).trim()}">${icon.bookmark}</button><span class="end">${esc(trade.views)} views</span></div></article>`;
+			};
+			function bar(handle) {
+				const person = profiles[handle];
+				const mark = person.pro ? ` <span class="pill">PRO</span>` : person.verified ? ` <span class="pill">Verified</span>` : "";
+				return `<div class="profile-bar"><button type="button" class="iconbtn" data-act="back" aria-label="Back"><svg viewBox="0 0 24 24"><path d="M15 6 9 12l6 6"/></svg></button><div class="profile-bar__handle">${esc(handle)}${mark}</div><button type="button" class="iconbtn" data-act="more" aria-label="More"><svg viewBox="0 0 24 24"><circle cx="6" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="18" cy="12" r="1"/></svg></button></div>`;
+			}
+			function renderProfile() {
+				const handle = state.person;
+				const person = profiles[handle];
+				const box = document.querySelector("#profile");
+				const rail = document.querySelector("#rail-profile");
+				if (!person || !box) return;
+				const followed = state.following.has(handle);
+				if (state.focus) {
+					const post = posts.find((item) => item.id === state.focus);
+					box.innerHTML = bar(handle) + (post ? postHTML(post, { full: true, photo: true }) : `<div class="notice">That post is no longer in the feed.</div>`);
+				} else {
+					let cursor = 0;
+					const ring = person.slices.map((item) => {
+						const start = cursor;
+						cursor += item.pct;
+						return `var(--${item.tone}) ${start}% ${cursor}%`;
+					}).join(", ");
+					const holds = person.slices.map((item) => `<div class="hold"><span class="hold__sym tone-${item.tone}">${esc(item.sym)}</span><span class="hold__name">${esc(item.name)}</span><b>${item.pct}%</b><span class="hold__ch">${esc(item.ch)}</span></div>`).join("");
+					const minePosts = posts.filter((item) => item.handle === handle);
+					const tabs = ["posts", "updates", "comments", "holdings", "look"];
+					const labels = { posts: "Posts", updates: "Updates", comments: "Comments", holdings: "Holdings", look: "Look-through" };
+					let panel = "";
+					if (state.ptab === "posts") {
+						panel = minePosts.length ? minePosts.map((item, index) => `${index === 0 ? `<div class="sub">Pinned</div>` : ""}${postHTML(item, { linked: true })}`).join("") : `<div class="notice">No posts yet.</div>`;
+					} else if (state.ptab === "updates") {
+						panel = person.trades.length ? person.trades.map((trade) => tradeHTML(trade, person, handle)).join("") : `<div class="notice">No portfolio updates yet.</div>`;
+					} else if (state.ptab === "comments") {
+						const notes = [];
+						posts.forEach((item) => item.comments.forEach((note) => { if (note.name === person.name) notes.push([item.title, note.text]); }));
+						panel = notes.length ? notes.map(([title, text]) => `<div class="comment"><b>${esc(title)}</b><br>${esc(text)}</div>`).join("") : `<div class="notice">No comments yet.</div>`;
+					} else if (state.ptab === "holdings") {
+						panel = `<div class="pf__list">${person.slices.map((item) => {
+							const kind = CARDS.has(item.sym) ? "Vaulted card" : BOOKS.has(item.sym) ? "Managed portfolio" : "Look-through";
+							return `<div class="pf__row"><span class="hold__sym tone-${item.tone}">${esc(item.sym)}</span><div><b>${esc(item.name)}</b><span>${kind}</span></div><em>${item.pct}%</em>${trackBtn(item.sym)}</div>`;
+						}).join("")}</div>`;
+					} else {
+						panel = person.look.map(([name, value]) => `<div class="row"><span>${esc(name)}</span><b>${esc(value)}</b></div>`).join("");
+					}
+					box.innerHTML = `${bar(handle)}<article class="sheet"><div class="ident"><button type="button" class="avatar avatar--lg hit tone-${person.tone}" data-act="profile" data-handle="${esc(handle)}" aria-label="${esc(person.name)}">${portrait(person)}</button><div><h2>${esc(person.name)}</h2><div class="pstats"><div><b>${esc(person.followers)}</b><span>Followers</span></div><div><b>${esc(person.following)}</b><span>Following</span></div><div><b>${person.holdings}</b><span>Holdings</span></div></div></div><div class="ident__actions"><button type="button" class="iconbtn" data-act="bell" aria-label="Alerts"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15z"/><path d="M10 18a2 2 0 0 0 4 0"/></svg></button><button type="button" class="app__btn app__btn--ghost follow" data-act="message">Message</button><button type="button" class="app__btn follow${followed ? " app__btn--ghost" : ""}" data-act="follow" data-handle="${esc(handle)}">${followed ? "Following" : "Follow"}</button></div></div><div class="pills">${person.badges.map((badge) => { const tone = { Vintage: "collectors", "Managed book": "investors", Community: "cards", "Low-Pop": "cards" }[badge]; return `<span class="pill${tone ? " tone-" + tone : ""}">${esc(badge)}</span>`; }).join("")}</div><p class="bio">${person.lines.map((line) => esc(line)).join("<br>")}<br><span>${esc(person.link)}</span></p></article><article class="sheet"><h2>Portfolio · ${person.holdings}</h2><div class="book"><div class="donut" style="background:conic-gradient(${ring})"><div class="donut__mid"><b>${esc(person.day)}</b><span>Today</span></div></div><div>${holds}<button type="button" class="hit seeall" data-act="ptab" data-ptab="holdings">See all holdings</button></div></div></article><div class="app__tabs" role="tablist">${tabs.map((tab) => `<button type="button" role="tab" data-act="ptab" data-ptab="${tab}" aria-selected="${state.ptab === tab ? "true" : "false"}">${labels[tab]}</button>`).join("")}</div>${panel}`;
+				}
+				const featured = Object.entries(profiles).filter(([key]) => key !== handle && key !== "@samrivera").slice(0, 4);
+				rail.innerHTML = `<div class="join"><h2>Watchlist · ${watchlist.length}</h2><div class="join__body">${watchlist.map(([sym, name, ch]) => { const mark = { CHAR: "/img/shots/charizard.png", MANT: "/img/shots/ball.jpg" }[sym]; return `<div class="watch"><div class="avatar avatar--sm${mark ? "" : " tone-" + toneOf(sym)}">${mark ? `<img src="${mark}" alt="">` : esc(sym.slice(0, 2))}</div><div><b>${esc(sym)}</b><span>${esc(name)}</span></div><div class="watch__end">${trackBtn(sym)}<em>${esc(ch)}</em></div></div>`; }).join("")}</div></div><div class="join"><h2>Featured collectors</h2><div class="join__body">${featured.map(([key, item]) => `<div class="suggest"><button type="button" class="avatar avatar--sm hit tone-${item.tone}" data-act="profile" data-handle="${esc(key)}" aria-label="${esc(item.name)}">${portrait(item)}</button><button type="button" class="hit" data-act="profile" data-handle="${esc(key)}"><b>${esc(item.name)}</b><span>${esc(key)}</span></button><button type="button" class="app__btn follow${state.following.has(key) ? " app__btn--ghost" : ""}" data-act="follow" data-handle="${esc(key)}">${state.following.has(key) ? "Following" : "Follow"}</button></div>`).join("")}</div></div>`;
+			}
+			function render() {
+				if (peopleEl) {
+					const directory = Object.keys(profiles)
+						.filter((handle) => handle !== "@samrivera")
+						.sort((a, b) => Number(Boolean(profiles[b].influencer)) - Number(Boolean(profiles[a].influencer)));
+					peopleEl.innerHTML = directory.map(personCard).join("");
+				}
+				if (feed) feed.innerHTML = posts.map(postHTML).join("");
+				if (followingEl) {
+					const followedPosts = posts.filter((post) => state.following.has(post.handle));
+					followingEl.innerHTML = followedPosts.length ? followedPosts.map(postHTML).join("") : `<div class="notice">Follow someone in Connect and their posts show up here.</div>`;
+				}
+				const kept = posts.filter((post) => state.saved.has(post.id));
+				savedEl.innerHTML = kept.length ? kept.map(postHTML).join("") : `<div class="notice">Nothing saved yet.</div>`;
+				topicBox.innerHTML = posts.filter((post) => post.topics.includes(state.topic)).map(postHTML).join("");
+				suggest.innerHTML = people().filter((post) => !state.following.has(post.handle)).slice(0, 3).map((post) => `<div class="suggest"><button type="button" class="avatar avatar--sm hit tone-${(profiles[post.handle] || {}).tone || "investors"}" data-act="profile" data-handle="${esc(post.handle)}" aria-label="${esc(post.name)}">${portrait(profiles[post.handle])}</button><button type="button" class="hit" data-act="profile" data-handle="${esc(post.handle)}"><b>${esc(post.name)}</b><span>${esc(post.handle)}</span></button><button type="button" class="app__btn follow${state.following.has(post.handle) ? " app__btn--ghost" : ""}" data-act="follow" data-handle="${esc(post.handle)}">${state.following.has(post.handle) ? "Following" : "Follow"}</button></div>`).join("") || `<div class="notice">You’re following everyone in this sample.</div>`;
+				const ticks = [...state.book.ticks].sort((a, b) => state.holdSort === "name" ? a.sym.localeCompare(b.sym) : parseFloat(b.pct) - parseFloat(a.pct));
+				const weights = ticks.map((item) => parseFloat(item.pct) || 0);
+				const sum = weights.reduce((total, value) => total + value, 0) || 1;
+				const greys = ["#e4e4e7", "#a1a1aa", "#71717a", "#8d8d93", "#52525b"];
+				let cursor = 0;
+				const ring = ticks.map((item, index) => {
+					const start = cursor;
+					cursor += (weights[index] / sum) * 100;
+					return `${greys[index % greys.length]} ${start}% ${cursor}%`;
+				}).join(", ");
+				const names = { CL50: "Fifty cards", VINT: "Vintage", MANT: "Mantle ’52", MAYS: "Mays", CHAR: "Charizard ’99", LPOP: "Low-Pop", OVLP: "Shared cards" };
+				const kindOf = (sym) => CARDS.has(sym) ? "Vaulted card" : BOOKS.has(sym) ? "Managed portfolio" : "Look-through";
+				bookEl.innerHTML = `<div class="donut pf__ring" style="background:conic-gradient(${ring})"><div class="donut__mid"><b>${ticks.length}</b><span>Holdings</span></div></div>`;
+				lookEl.innerHTML = ticks.length ? ticks.map((item) => {
+					const mark = { CHAR: "/img/shots/charizard.png", MANT: "/img/shots/ball.jpg" }[item.sym];
+					return `<div class="pf__row"><div class="avatar avatar--sm">${mark ? `<img src="${mark}" alt="">` : esc(item.sym.slice(0, 2))}</div><div><b>${esc(item.sym)}</b><span>${esc(names[item.sym] || item.sym)} · ${kindOf(item.sym)}</span></div><em>${esc(item.pct)}</em>${trackBtn(item.sym)}</div>`;
+				}).join("") : `<div class="pf__empty"><p>No shares in this sample</p><button type="button" class="app__btn" data-act="discuss">Discuss a portfolio</button></div>`;
+				const sortBtn = document.querySelector("#pf-sort");
+				if (sortBtn) sortBtn.textContent = state.holdSort === "name" ? "Sort: Name" : "Sort: Share";
+				if (document.querySelector('[data-view="profile"]').classList.contains("is-on")) renderProfile();
+				paintMarkets();
+				syncTracks();
+			}
+			const MARKET_BOOKS = [
+				{ id: "cl50", sym: "CL50", name: "CL50", level: "1,284.60", change: "+0.86%", series: { "5D": [42, 58, 51, 36, 48, 70, 62, 74], "1M": [30, 44, 40, 55, 48, 62, 58, 46, 68, 72, 60, 66], "3M": [22, 35, 48, 40, 58, 52, 70, 64, 60, 78], "1Y": [18, 28, 40, 36, 50, 62, 48, 70, 66, 80], "5Y": [12, 20, 32, 28, 44, 40, 56, 70, 62, 78], Max: [10, 18, 26, 22, 34, 48, 40, 58, 70, 64, 76] } },
+				{ id: "vintage", sym: "VINT", name: "Vintage", level: "986.40", change: "+0.42%", series: { "5D": [60, 55, 62, 58, 50, 66, 64, 70], "1M": [48, 52, 46, 60, 58, 54, 68, 62, 70, 66, 72, 69], "3M": [40, 48, 44, 56, 60, 52, 64, 70, 66, 74], "1Y": [30, 38, 46, 42, 55, 60, 58, 66, 72, 68], "5Y": [20, 28, 36, 44, 40, 52, 60, 58, 66, 72], Max: [16, 24, 30, 38, 46, 42, 54, 62, 58, 68, 74] } },
+				{ id: "lowpop", sym: "LPOP", name: "Low-Pop", level: "742.15", change: "+1.10%", series: { "5D": [28, 36, 44, 40, 58, 66, 62, 78], "1M": [24, 30, 42, 38, 50, 62, 58, 70, 74, 68, 80, 76], "3M": [20, 34, 30, 48, 56, 52, 68, 74, 70, 82], "1Y": [16, 26, 38, 34, 48, 60, 56, 72, 78, 74], "5Y": [12, 22, 30, 40, 36, 52, 64, 60, 74, 80], Max: [8, 16, 28, 24, 40, 52, 48, 64, 72, 68, 82] } },
+				{ id: "sports", sym: "SPRT", name: "Sports", level: "610.80", change: "+0.18%", series: { "5D": [50, 54, 48, 58, 52, 60, 56, 62], "1M": [44, 48, 52, 46, 58, 54, 60, 56, 64, 60, 58, 63], "3M": [36, 42, 48, 44, 52, 58, 54, 62, 60, 66], "1Y": [28, 36, 42, 48, 44, 56, 60, 54, 64, 68], "5Y": [22, 30, 38, 34, 46, 52, 58, 54, 62, 66], Max: [18, 26, 32, 40, 36, 48, 56, 52, 60, 64, 68] } },
+				{ id: "rookies", sym: "ROOK", name: "Rookies", level: "455.22", change: "−0.24%", series: { "5D": [70, 64, 68, 58, 60, 52, 56, 48], "1M": [74, 68, 72, 60, 64, 56, 58, 50, 54, 46, 50, 44], "3M": [80, 72, 76, 64, 68, 58, 62, 52, 48, 44], "1Y": [78, 70, 74, 66, 60, 64, 52, 48, 56, 42], "5Y": [72, 68, 60, 64, 54, 58, 46, 50, 42, 40], Max: [68, 62, 66, 58, 52, 56, 48, 44, 50, 40, 38] } }
+			];
+			function chartSVG(points) {
+				const w = 360;
+				const h = 168;
+				const padX = 8;
+				const padTop = 18;
+				const padBot = 36;
+				const max = Math.max(...points);
+				const min = Math.min(...points);
+				const span = max - min || 1;
+				const xy = points.map((point, index) => [
+					padX + (index / (points.length - 1)) * (w - padX * 2),
+					h - padBot - ((point - min) / span) * (h - padTop - padBot)
+				]);
+				let d = `M${xy[0][0].toFixed(1)} ${xy[0][1].toFixed(1)}`;
+				for (let i = 0; i < xy.length - 1; i++) {
+					const p0 = xy[i - 1] || xy[i];
+					const p1 = xy[i];
+					const p2 = xy[i + 1];
+					const p3 = xy[i + 2] || p2;
+					const c1x = p1[0] + (p2[0] - p0[0]) / 6;
+					const c1y = p1[1] + (p2[1] - p0[1]) / 6;
+					const c2x = p2[0] - (p3[0] - p1[0]) / 6;
+					const c2y = p2[1] - (p3[1] - p1[1]) / 6;
+					d += ` C${c1x.toFixed(1)} ${c1y.toFixed(1)} ${c2x.toFixed(1)} ${c2y.toFixed(1)} ${p2[0].toFixed(1)} ${p2[1].toFixed(1)}`;
+				}
+				const floor = h - 8;
+				return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="mktfade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e4e4e7" stop-opacity="0.28"/><stop offset="1" stop-color="#e4e4e7" stop-opacity="0"/></linearGradient></defs><path d="${d} L${xy[xy.length - 1][0].toFixed(1)} ${floor} L${xy[0][0].toFixed(1)} ${floor} Z" fill="url(#mktfade)"/><path d="${d}" fill="none" stroke="#e4e4e7" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg>`;
+			}
+			function paintMarkets() {
+				const list = document.querySelector("#mkt-list");
+				const stage = document.querySelector("#mkt-stage");
+				if (!list || !stage) return;
+				const book = MARKET_BOOKS.find((item) => item.id === state.market) || MARKET_BOOKS[0];
+				const ranges = ["5D", "1M", "3M", "1Y", "5Y", "Max"];
+				const down = /^[−-]/.test(book.change);
+				list.innerHTML = MARKET_BOOKS.map((item) => `<button type="button" data-act="market" data-book="${item.id}" class="${item.id === book.id ? "is-on" : ""}"><i>${esc(item.sym.slice(0, 2))}</i><span>${esc(item.name)}</span></button>`).join("");
+				stage.innerHTML = `<div class="mkt__head"><h2>${esc(book.name)} performance</h2>${trackBtn(book.sym)}</div><p class="mkt__level"><b>${esc(book.level)}</b><span class="${down ? "is-down" : ""}">${esc(book.change)}</span></p><div class="mkt__plot">${chartSVG(book.series[state.range] || book.series["5D"])}</div><div class="mkt__ranges">${ranges.map((range) => `<button type="button" data-act="range" data-range="${range}" class="${range === state.range ? "is-on" : ""}">${range}</button>`).join("")}</div>`;
+				const dive = document.querySelector('.mkt-card__link[data-goto]');
+				if (dive) dive.dataset.goto = topics[book.id] ? book.id : "cl50";
+			}
+			function syncTracks() {
+				document.querySelectorAll("[data-act='followcard'], [data-act='watchbook']").forEach((button) => {
+					const sym = button.dataset.sym;
+					if (!sym || !trackLabel(sym)) return;
+					const label = trackLabel(sym);
+					const slot = button.querySelector("span");
+					if (slot && button.querySelector("svg")) slot.textContent = label;
+					else if (!slot) button.textContent = label;
+					const on = trackOn(sym);
+					button.classList.toggle("is-on", on);
+					if (button.classList.contains("app__btn")) button.classList.toggle("app__btn--ghost", on);
+				});
+			}
+			function say(message) {
+				toast.textContent = message;
+				toast.classList.add("is-on");
+				clearTimeout(toastTimer);
+				toastTimer = setTimeout(() => toast.classList.remove("is-on"), 2200);
+			}
+			function show(side) {
+				const view = ["cl50", "lowpop", "vintage"].includes(side) ? "topic" : side;
+				if (view === "topic") {
+					state.topic = side;
+					document.querySelector("#topic-title").textContent = topics[side][0];
+					document.querySelector("#topic-lead").textContent = topics[side][1];
+				}
+				document.querySelectorAll(".view").forEach((section) => section.classList.toggle("is-on", section.dataset.view === view));
+				document.querySelectorAll(".navbtn[data-side]").forEach((button) => {
+					if (button.dataset.side === side) button.setAttribute("aria-current", "page");
+					else button.removeAttribute("aria-current");
+				});
+				if (side === "chat") document.querySelector(".app__badge").hidden = true;
+				const topPortfolio = document.querySelector("#nav-portfolio");
+				const topMarkets = document.querySelector("#nav-markets");
+				const topConnect = document.querySelector("#nav-connect");
+				topPortfolio.removeAttribute("aria-current");
+				topMarkets.removeAttribute("aria-current");
+				topConnect.removeAttribute("aria-current");
+				if (view === "portfolio") {
+					topPortfolio.setAttribute("aria-current", "page");
+					if (location.hash !== "#portfolio") history.replaceState(null, "", "#portfolio");
+				} else if (view === "markets") {
+					topMarkets.setAttribute("aria-current", "page");
+					if (location.hash !== "#markets") history.replaceState(null, "", "#markets");
+				} else {
+					topConnect.setAttribute("aria-current", "page");
+					if (location.hash === "#portfolio" || location.hash === "#markets") history.replaceState(null, "", location.pathname + location.search);
+				}
+				const onProfile = view === "profile";
+				document.querySelector(".rail-home").hidden = onProfile;
+				document.querySelector(".rail-profile").hidden = !onProfile;
+				document.querySelector(".app__feed").scrollTop = 0;
+				render();
+			}
+			function paintAttach() {
+				if (!attach || !publish || !input) return;
+				if (state.attached) {
+					attach.hidden = false;
+					attach.innerHTML = ticksHTML(state.book.ticks);
+				} else if (state.tool) {
+					attach.hidden = false;
+					attach.innerHTML = `<span class="tick">${esc(state.tool)} <span>attached</span></span>`;
+				} else {
+					attach.hidden = true;
+					attach.innerHTML = "";
+				}
+				publish.hidden = !(input.value.trim() || state.attached || state.tool);
+			}
+			function publishPost() {
+				const text = input.value.trim();
+				posts.unshift({
+					id: "me-" + Date.now(),
+					av: "SR",
+					name: "Sam Rivera",
+					handle: "@samrivera",
+					sub: "Just now",
+					title: text ? text.split(". ")[0].slice(0, 72) : "Watching a managed portfolio",
+					body: text || "CL50 is 60% of my shares and Vintage is 40%. Mantle ’52 is a vaulted card inside both. Posting the share, not a trade.",
+					extra: !state.attached && state.tool ? state.tool : "",
+					ticks: state.attached ? state.book.ticks : [hold("CL50", "60%"), hold("VINT", "40%"), hold("MANT", "19.2%")],
+					likes: 0, comments: [], reposts: 0, views: "1",
+					topics: ["cl50", "vintage"],
+					copy: state.book.copy,
+					look: state.book.look
+				});
+				input.value = "";
+				state.tool = null;
+				state.attached = false;
+				paintAttach();
+				show("home");
+				say("Posted to For You");
+			}
+			document.querySelector(".app").addEventListener("click", (event) => {
+				const action = event.target.closest("[data-act]");
+				const tab = event.target.closest("[data-tab]");
+				const tool = event.target.closest("[data-tool]");
+				const go = event.target.closest("[data-goto]");
+				const side = event.target.closest("[data-side]");
+				if (action) {
+					const post = posts.find((item) => item.id === action.dataset.id);
+					if (action.dataset.act === "market") {
+						state.market = action.dataset.book;
+						render();
+					} else if (action.dataset.act === "range") {
+						state.range = action.dataset.range;
+						render();
+					} else if (action.dataset.act === "samplemonth") {
+						say("This sample stays on November.");
+					} else if (action.dataset.act === "moodinfo") {
+						say("Vault mood is a mock reading of the sample. Not a price.");
+					} else if (action.dataset.act === "follow") {
+						const handle = action.dataset.handle;
+						if (state.following.has(handle)) state.following.delete(handle);
+						else state.following.add(handle);
+						render();
+						say(state.following.has(handle) ? "You now follow " + handle : "Unfollowed " + handle);
+					} else if (action.dataset.act === "followcard" || action.dataset.act === "watchbook") {
+						const sym = action.dataset.sym;
+						const set = action.dataset.act === "followcard" ? state.cards : state.watched;
+						if (!sym || !(action.dataset.act === "followcard" ? CARDS : BOOKS).has(sym)) return;
+						if (set.has(sym)) set.delete(sym);
+						else set.add(sym);
+						render();
+						const name = TRACK_NAME[sym] || sym;
+						say(set.has(sym)
+							? (CARDS.has(sym) ? "Following " + name + ". The card stays vaulted." : "Watching " + name + ". Mock shares only. No checkout.")
+							: (CARDS.has(sym) ? "Unfollowed " + name : "Stopped watching " + name));
+					} else if (action.dataset.act === "like") {
+						if (state.liked.has(post.id)) state.liked.delete(post.id);
+						else state.liked.add(post.id);
+						render();
+					} else if (action.dataset.act === "comment") {
+						state.open = state.open === post.id ? null : post.id;
+						render();
+					} else if (action.dataset.act === "more") {
+						if (state.more.has(post.id)) state.more.delete(post.id);
+						else state.more.add(post.id);
+						render();
+					} else if (action.dataset.act === "repost") {
+						if (state.reposted.has(post.id)) state.reposted.delete(post.id);
+						else state.reposted.add(post.id);
+						render();
+					} else if (action.dataset.act === "save") {
+						if (state.saved.has(post.id)) state.saved.delete(post.id);
+						else state.saved.add(post.id);
+						render();
+						say(state.saved.has(post.id) ? "Saved" : "Removed from Saved posts");
+					} else if (action.dataset.act === "copy") {
+						say("Watch a portfolio from its pill. This demo does not turn that into an order.");
+					} else if (action.dataset.act === "profile") {
+						const current = document.querySelector(".view.is-on");
+						if (current && current.dataset.view !== "profile") state.returnTo = current.dataset.view;
+						state.person = action.dataset.handle;
+						state.focus = null;
+						state.ptab = "posts";
+						show("profile");
+					} else if (action.dataset.act === "openpost") {
+						state.focus = action.dataset.id;
+						renderProfile();
+						document.querySelector(".app__feed").scrollTop = 0;
+					} else if (action.dataset.act === "back") {
+						if (state.focus) {
+							state.focus = null;
+							renderProfile();
+						} else show(state.returnTo || "home");
+					} else if (action.dataset.act === "tlike" || action.dataset.act === "trepost" || action.dataset.act === "tsave") {
+						const id = action.dataset.id;
+						const set = action.dataset.act === "tlike" ? state.liked : action.dataset.act === "trepost" ? state.reposted : state.saved;
+						if (set.has(id)) set.delete(id);
+						else set.add(id);
+						render();
+					} else if (action.dataset.act === "tcomment") {
+						say("No comments on this update yet");
+					} else if (action.dataset.act === "ptab") {
+						state.ptab = action.dataset.ptab;
+						renderProfile();
+					} else if (action.dataset.act === "discuss") {
+						say("Discussion only. Cards stay vaulted. This demo does not trade.");
+					} else if (action.dataset.act === "paperonly") {
+						say("Percentages only. No checkout, payment, or live trading in this demo.");
+					} else if (action.dataset.act === "visibility") {
+						const button = document.querySelector("#privacy");
+						const priv = button.textContent !== "Private";
+						button.textContent = priv ? "Private" : "Public";
+						button.classList.toggle("app__btn--ghost", !priv);
+						document.querySelector("#book-lead").textContent = priv ? "Showing: private" : "Showing: your shares";
+						say(priv ? "Portfolio stays private" : "Portfolio is public as percentages");
+					} else if (action.dataset.act === "sortbook") {
+						state.holdSort = state.holdSort === "share" ? "name" : "share";
+						render();
+					} else if (action.dataset.act === "message") {
+						say("Message " + state.person);
+					} else if (action.dataset.act === "bell") {
+						say("Alerts on for " + state.person);
+					} else if (action.dataset.act === "more") {
+						say("Link copied for " + state.person);
+					}
+					return;
+				}
+				if (tab) {
+					document.querySelectorAll("[data-tab]").forEach((item) => item.setAttribute("aria-selected", item === tab ? "true" : "false"));
+					document.querySelectorAll("[data-panel]").forEach((panel) => { panel.hidden = panel.dataset.panel !== tab.dataset.tab; });
+					return;
+				}
+				if (tool) {
+					if (tool.dataset.tool === "portfolio") {
+						state.attached = !state.attached;
+						if (state.attached) state.tool = null;
+					} else {
+						state.tool = state.tool === tool.dataset.tool ? null : tool.dataset.tool;
+						state.attached = false;
+					}
+					paintAttach();
+					return;
+				}
+				if (go) show(go.dataset.goto);
+				else if (side) show(side.dataset.side);
+			});
+			document.querySelector(".app").addEventListener("submit", (event) => {
+				const form = event.target;
+				if (form.classList.contains("reply")) {
+					event.preventDefault();
+					const post = posts.find((item) => item.id === form.dataset.id);
+					const text = form.text.value.trim();
+					if (!post || !text) return;
+					post.comments.push({ name: "Sam Rivera", handle: "@samrivera", text });
+					state.open = post.id;
+					render();
+				}
+				if (form.classList.contains("chat__form")) {
+					event.preventDefault();
+					const text = form.text.value.trim();
+					if (!text) return;
+					document.querySelector(".chat__log:not([hidden])").insertAdjacentHTML("beforeend", `<div class="bubble"><b>Sam Rivera</b>${esc(text)}</div>`);
+					form.text.value = "";
+				}
+			});
+			document.querySelectorAll(".chat__person").forEach((button) => {
+				button.addEventListener("click", () => {
+					document.querySelectorAll(".chat__person").forEach((item) => item.removeAttribute("aria-current"));
+					button.setAttribute("aria-current", "true");
+					document.querySelectorAll(".chat__log").forEach((log) => { log.hidden = log.dataset.log !== button.dataset.thread; });
+				});
+			});
+			document.querySelector("#topics-toggle").addEventListener("click", () => {
+				const list = document.querySelector("#topic-list");
+				const open = list.hidden;
+				list.hidden = !open;
+				document.querySelector("#topics-toggle").setAttribute("aria-expanded", open ? "true" : "false");
+			});
+			if (input) input.addEventListener("input", paintAttach);
+			if (publish) publish.addEventListener("click", publishPost);
+			document.querySelector("#post-book").addEventListener("click", () => {
+				say("Connect is a scroll of people. Open someone to see what they watch.");
+			});
+			document.querySelector("#keep").addEventListener("click", () => {
+				document.querySelector("#book-lead").textContent = "Showing: private";
+				document.querySelector("#privacy").textContent = "Private";
+				say("Portfolio stays private");
+				show("portfolio");
+			});
+			document.querySelector("#paper").addEventListener("click", () => {
+				const button = document.querySelector("#paper");
+				const on = button.getAttribute("aria-pressed") !== "true";
+				button.setAttribute("aria-pressed", on ? "true" : "false");
+				button.textContent = on ? "On" : "Off";
+				button.classList.toggle("app__btn--ghost", !on);
+				say(on ? "Mock data on. Percentages only. No checkout." : "This demo still hides checkout, payments, and live trading.");
+			});
+			document.querySelector("#privacy").addEventListener("click", () => {
+				const button = document.querySelector("#privacy");
+				const priv = button.textContent !== "Private";
+				button.textContent = priv ? "Private" : "Public";
+				button.classList.toggle("app__btn--ghost", !priv);
+			});
+			document.querySelector("#nav-portfolio").addEventListener("click", (event) => {
+				event.preventDefault();
+				show("portfolio");
+			});
+			document.querySelector("#nav-markets").addEventListener("click", (event) => {
+				event.preventDefault();
+				show("markets");
+			});
+			const menuButton = document.querySelector(".hero__menu");
+			if (menuButton) {
+				menuButton.addEventListener("click", () => {
+					const nav = menuButton.closest(".hero__nav");
+					const open = nav.classList.toggle("is-open");
+					menuButton.setAttribute("aria-expanded", open ? "true" : "false");
+				});
+				document.querySelectorAll(".hero__links a").forEach((link) => {
+					link.addEventListener("click", () => {
+						menuButton.closest(".hero__nav").classList.remove("is-open");
+						menuButton.setAttribute("aria-expanded", "false");
+					});
+				});
+			}
+			if (location.hash === "#portfolio") show("portfolio");
+			if (location.hash === "#markets") show("markets");
+			document.querySelector("#topic-title").textContent = topics.cl50[0];
+			document.querySelector("#topic-lead").textContent = topics.cl50[1];
+			render();
+		</script>
+	</body>
+</html>
